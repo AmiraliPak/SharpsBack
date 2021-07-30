@@ -10,6 +10,19 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  create-envfile:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Make envfile
+      uses: SpicyPizza/create-envfile@v1
+      with:
+        envkey_PORT: ${{secrets.PORT}}
+        envkey_JWT_SECRET: ${{secrets.JWT_SECRET}}
+        envkey_PUBLIC_URL: ${{secrets.PUBLIC_URL}}
+        envkey_PUBLIC_DB: ${{secrets.PUBLIC_DB}}
+        envkey_MAILUSER: ${{secrets.MAILUSER}}
+        envkey_MAILPASS: ${{secrets.MAILPASS}}
+
   build_and_push:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged

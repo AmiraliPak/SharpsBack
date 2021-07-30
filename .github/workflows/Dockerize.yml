@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  create-envfile:
+  create_envfile:
     runs-on: ubuntu-latest
     steps:
     - name: Make envfile
@@ -24,12 +24,13 @@ jobs:
         envkey_MAILPASS: ${{secrets.MAILPASS}}
 
   build_and_push:
+    needs: create_envfile
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged
     permissions:
       contents: read
       packages: write
-      
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2

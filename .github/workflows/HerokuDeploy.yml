@@ -16,6 +16,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "sharpsback"
           heroku_email: ${{secrets.HEROKU_EMAIL}}
+          usedocker: true
         env:
           HD_PORT: ${{secrets.PORT}}
           HD_JWT_SECRET: ${{secrets.JWT_SECRET}}

@@ -1,0 +1,20 @@
+FROM node:stretch-slim
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+ENV PORT=${PORT}
+ENV JWT_SECRET=${JWT_SECRET}
+ENV PUBLIC_URL=${PUBLIC_URL}
+ENV PUBLIC_DB=${PUBLIC_DB}
+ENV MAILUSER=${MAILUSER}
+ENV MAILPASS=${MAILPASS}
+
+EXPOSE ${PORT}
+
+CMD ["npm" , "start"]
